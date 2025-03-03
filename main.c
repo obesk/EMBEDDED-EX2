@@ -17,7 +17,6 @@ int main(){
     tmr_setup_period(TIMER1, 200);
 
     
-    unsigned long i = 0;
     while(true) {
         if (toggle) {
             LATA = 0x0001;
@@ -25,13 +24,8 @@ int main(){
             LATA = 0x0000;
         }
         
-        if (i % 10 == 0) {
-            toggle = !toggle;
-        }
-        
+        toggle = !toggle;
         tmr_wait_period(TIMER1);
-        ++i;
-
     }
 
     return 0;

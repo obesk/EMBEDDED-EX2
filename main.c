@@ -11,21 +11,15 @@
 
 int main(){
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
-    bool toggle = true;
     TRISA = 0x0000;
-
-    tmr_setup_period(TIMER1, 200);
-
     
     while(true) {
-        if (toggle) {
-            LATA = 0x0001;
-        } else {
-            LATA = 0x0000;
-        }
-        
-        toggle = !toggle;
-        tmr_wait_period(TIMER1);
+
+        LATA = 0x0001;
+        tmr_wait_ms(TIMER2, 20);
+
+        LATA = 0x0000; 
+        tmr_wait_ms(TIMER2, 200);
     }
 
     return 0;

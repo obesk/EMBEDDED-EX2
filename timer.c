@@ -55,3 +55,8 @@ void tmr_wait_period(int timer) {
         break;
 	}
 }
+
+void tmr_wait_ms(int timer, int ms){
+	tmr_setup_period(timer, ms);
+	tmr_wait_period(timer);
+}

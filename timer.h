@@ -10,4 +10,6 @@ void tmr_setup_period(int timer, int ms);
 
 void tmr_wait_period(int timer);
 
+void tmr_wait_ms(int timer, int ms);
+
 #endif

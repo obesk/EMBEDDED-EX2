@@ -66,16 +66,17 @@ int tmr_wait_period(int timer) {
     return ret;
 }
 
+//TODO: check if 1ms is a mulitple of our timer period, if so it's better to 
+// have a for in which we wait for 1ms
 void tmr_wait_ms(int timer, int ms){
-    
     int cycles_int = ms / MAX_DELAY;  // num of entire cycles needed
     int rem = ms % MAX_DELAY;  //[ms] in case cycles_int = 0, rem = ms
     
     if(cycles_int > 0) {
         tmr_setup_period(timer, MAX_DELAY);
-    }
-    for(int i = 0; i < cycles_int; i++) {
-        tmr_wait_period(timer);
+        for(int i = 0; i < cycles_int; i++) {
+            tmr_wait_period(timer);
+        }
     }
     
     if(rem > 0) {

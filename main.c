@@ -15,9 +15,10 @@ int main(){
     TRISG = 0x0000;
 
     tmr_setup_period(TIMER1, 200);
-    int delay = 200;
+    int delay = 198;
     
     bool toggle = true;
+    LATGbits.LATG9 = 0;
  
     while(true) {
         tmr_wait_ms(TIMER2, delay);
@@ -30,7 +31,7 @@ int main(){
  
         toggle = !toggle;
 
-		LATGbits.LATG9 =tmr_wait_period(TIMER1)
+		LATGbits.LATG9 = tmr_wait_period(TIMER1);
     }
 
     return 0;
